@@ -42,6 +42,7 @@ CREATE TABLE users (
     FOREIGN KEY (role_id) REFERENCES roles(role_id),
     FOREIGN KEY (branch_id) REFERENCES branches(branch_id) ON DELETE SET NULL
 );
+
 -- ---------------------------------------------------------------------
 -- CATEGORIES — self-referencing tree (Gender > Clothing/Shoes > Type)
 -- ---------------------------------------------------------------------
@@ -66,6 +67,42 @@ CREATE TABLE suppliers (
     address VARCHAR(255),
     status ENUM('active','inactive') DEFAULT 'active',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- ---------------------------------------------------------------------
+-- PRODUCTS
+-- ---------------------------------------------------------------------
+CREATE TABLE products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    sku VARCHAR(50) UNIQUE,
+    product_name VARCHAR(150) NOT NULL,
+    category_id INT NOT NULL,
+    supplier_id INT,
+    size VARCHAR(20),
+    color VARCHAR(50),
+    cost_price DECIMAL(10,2) DEFAULT 0,
+    selling_price DECIMAL(10,2) NOT NULL DEFAULT 0,
+    reorder_level INT DEFAULT 10,
+    image VARCHAR(255),
+    status ENUM('active','inactive') DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id) ON DELETE SET NULL
+);
+
+-- ---------------------------------------------------------------------
+--  INVENTORY — live stock quantity per product per branch
+-- ---------------------------------------------------------------------
+CREATE TABLE inventory (
+    inventory_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    branch_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 0,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_product_branch (product_id, branch_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
+    FOREIGN KEY (branch_id) REFERENCES branches(branch_id) ON DELETE CASCADE
 );
 
 -- ---------------------------------------------------------------------
@@ -141,6 +178,18 @@ CREATE TABLE notifications (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
     FOREIGN KEY (branch_id) REFERENCES branches(branch_id) ON DELETE CASCADE
+);
+
+-- ---------------------------------------------------------------------
+-- ACTIVITY_LOGS — audit trail
+-- ---------------------------------------------------------------------
+CREATE TABLE activity_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    action VARCHAR(100) NOT NULL,
+    description VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE SET NULL
 );
 
 -- ---------------------------------------------------------------------
