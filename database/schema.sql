@@ -189,6 +189,11 @@ INSERT INTO categories (category_name, parent_id, cat_level) VALUES
 ('Loafers', 6, 3),
 ('Sandals', 6, 3);
 
+-- suppliers
+INSERT INTO suppliers (supplier_name, contact_person, phone, email, address) VALUES
+('Dhaka Textile House', 'Karim Rahman', '01811111111', 'contact@dhakatextile.com', 'Old Dhaka, Dhaka'),
+('Northern Footwear Ltd.', 'Fatima Begum', '01822222222', 'sales@northernfootwear.com', 'Tongi, Gazipur');
+
 -- Stock In:
 INSERT INTO stock_in (supplier_id, branch_id, user_id, reference_no, stock_in_date, total_cost, notes) VALUES
 (1, 1, 1, 'SI-OPEN-B1', DATE_SUB(CURDATE(), INTERVAL 20 DAY), 283700.00, 'Opening balance stock'),
@@ -277,6 +282,38 @@ INSERT INTO stock_out (branch_id, user_id, reference_no, stock_out_date, total_a
 (2, 3, 'SO-20260704-B2', CURDATE(), 12100.00, 'Daily sales'),
 (1, 2, 'SO-20260704-B1', CURDATE(), 4400.00, 'Daily sales');
 
+-- stock out details
+INSERT INTO stock_out_details (stock_out_id, product_id, quantity, unit_price) VALUES
+(1, 3, 8, 550.00),
+(2, 4, 6, 450.00),
+(3, 1, 3, 2200.00),
+(4, 6, 4, 1450.00),
+(5, 8, 5, 900.00),
+(6, 11, 4, 1300.00),
+(7, 3, 10, 550.00),
+(8, 10, 3, 1400.00),
+(9, 15, 4, 1100.00),
+(9, 7, 5, 1250.00),
+(10, 13, 6, 1900.00),
+(11, 14, 3, 2200.00),
+(12, 2, 4, 2800.00),
+(13, 9, 3, 1750.00),
+(14, 12, 6, 1150.00),
+(15, 4, 9, 450.00),
+(16, 5, 4, 2600.00),
+(16, 6, 3, 1450.00),
+(17, 8, 4, 900.00),
+(18, 3, 9, 550.00),
+(19, 13, 7, 1900.00),
+(20, 15, 3, 1100.00)
+(21, 14, 5, 2200.00),
+(21, 11, 5, 1300.00),
+(22, 9, 4, 1750.00),
+(22, 13, 5, 1900.00),
+(23, 7, 3, 1250.00),
+(24, 3, 6, 550.00),
+(24, 14, 4, 2200.00),
+(25, 1, 2, 2200.00);
 
 INSERT INTO settings (setting_key, setting_value) VALUES
 ('company_name', 'Perfect Choice'),
