@@ -134,6 +134,7 @@ INSERT INTO users (full_name, email, password, role_id, branch_id, phone) VALUES
 ('Admin', 'admin@perfectchoice.com', '$2y$10$fP71sE8f.KnPU4UBwtGXIO4xP0ckofw.BJ9zyDOAUSC0mpr16e1Ma', 1, 1, '01710000001'),
 ('Branch Manager Gulshan', 'manager.gulshan@perfectchoice.com', '$2y$10$hZHYu.AO0Sfsos1CuaEbBuklhTyiL3Fwor2a0ohrp1GlTt3IYjxsm', 2, 1, '01710000002'),
 ('Sales User Uttara', 'sales.uttara@perfectchoice.com', '$2y$10$hX1KFgIm6kdlOoB1iWQXD.YGL8QCHzLQIVldw2RriiYFjlS6043P6', 3, 2, '01710000003');
+
 INSERT INTO stock_in_details (stock_in_id, product_id, quantity, unit_cost) VALUES
 (1, 1, 30, 1200.00),
 (1, 2, 18, 1500.00),
@@ -215,37 +216,7 @@ INSERT INTO stock_in (supplier_id, branch_id, user_id, reference_no, stock_in_da
 (2, 1, 1, 'SI-20260703-B1', DATE_SUB(CURDATE(), INTERVAL 1 DAY), 6500.00, 'Restock delivery'),
 (1, 2, 2, 'SI-20260703-B2', DATE_SUB(CURDATE(), INTERVAL 1 DAY), 2500.00, 'Restock delivery'),
 (2, 1, 1, 'SI-20260704-B1', CURDATE(), 5000.00, 'Restock delivery');
--- Stock Out: 
-INSERT INTO stock_out (branch_id, user_id, reference_no, stock_out_date, total_amount, notes) VALUES
-(1, 2, 'SO-20260621-B1', DATE_SUB(CURDATE(), INTERVAL 13 DAY), 4400.00, 'Daily sales'),
-(2, 3, 'SO-20260621-B2', DATE_SUB(CURDATE(), INTERVAL 13 DAY), 2700.00, 'Daily sales'),
-(1, 2, 'SO-20260622-B1', DATE_SUB(CURDATE(), INTERVAL 12 DAY), 6600.00, 'Daily sales'),
-(2, 3, 'SO-20260622-B2', DATE_SUB(CURDATE(), INTERVAL 12 DAY), 5800.00, 'Daily sales'),
-(1, 2, 'SO-20260623-B1', DATE_SUB(CURDATE(), INTERVAL 11 DAY), 4500.00, 'Daily sales'),
-(2, 3, 'SO-20260623-B2', DATE_SUB(CURDATE(), INTERVAL 11 DAY), 5200.00, 'Daily sales'),
-(1, 2, 'SO-20260624-B1', DATE_SUB(CURDATE(), INTERVAL 10 DAY), 5500.00, 'Daily sales'),
-(2, 3, 'SO-20260624-B2', DATE_SUB(CURDATE(), INTERVAL 10 DAY), 4200.00, 'Daily sales'),
-(1, 2, 'SO-20260625-B1', DATE_SUB(CURDATE(), INTERVAL 9 DAY), 10650.00, 'Daily sales'),
-(1, 2, 'SO-20260626-B1', DATE_SUB(CURDATE(), INTERVAL 8 DAY), 11400.00, 'Daily sales'),
-(2, 3, 'SO-20260626-B2', DATE_SUB(CURDATE(), INTERVAL 8 DAY), 6600.00, 'Daily sales'),
-(1, 2, 'SO-20260627-B1', DATE_SUB(CURDATE(), INTERVAL 7 DAY), 11200.00, 'Daily sales'),
-(2, 3, 'SO-20260627-B2', DATE_SUB(CURDATE(), INTERVAL 7 DAY), 5250.00, 'Daily sales'),
-(1, 2, 'SO-20260628-B1', DATE_SUB(CURDATE(), INTERVAL 6 DAY), 6900.00, 'Daily sales'),
-(2, 3, 'SO-20260628-B2', DATE_SUB(CURDATE(), INTERVAL 6 DAY), 4050.00, 'Daily sales'),
-(1, 2, 'SO-20260629-B1', DATE_SUB(CURDATE(), INTERVAL 5 DAY), 14750.00, 'Daily sales'),
-(2, 3, 'SO-20260630-B2', DATE_SUB(CURDATE(), INTERVAL 4 DAY), 3600.00, 'Daily sales'),
-(1, 2, 'SO-20260630-B1', DATE_SUB(CURDATE(), INTERVAL 4 DAY), 4950.00, 'Daily sales'),
-(1, 2, 'SO-20260701-B1', DATE_SUB(CURDATE(), INTERVAL 3 DAY), 13300.00, 'Daily sales'),
-(2, 3, 'SO-20260701-B2', DATE_SUB(CURDATE(), INTERVAL 3 DAY), 3300.00, 'Daily sales'),
-(1, 2, 'SO-20260702-B1', DATE_SUB(CURDATE(), INTERVAL 2 DAY), 17500.00, 'Daily sales'),
-(1, 2, 'SO-20260703-B1', DATE_SUB(CURDATE(), INTERVAL 1 DAY), 16500.00, 'Daily sales'),
-(2, 3, 'SO-20260703-B2', DATE_SUB(CURDATE(), INTERVAL 1 DAY), 3750.00, 'Daily sales'),
-(2, 3, 'SO-20260704-B2', CURDATE(), 12100.00, 'Daily sales'),
-(1, 2, 'SO-20260704-B1', CURDATE(), 4400.00, 'Daily sales');
-INSERT INTO settings (setting_key, setting_value) VALUES
-('company_name', 'Perfect Choice'),
-('currency', 'BDT'),
-('low_stock_threshold_default', '10');
+
 INSERT INTO stock_in_details (stock_in_id, product_id, quantity, unit_cost) VALUES
 (1, 1, 30, 1200.00),
 (1, 2, 18, 1500.00),
@@ -286,4 +257,41 @@ INSERT INTO stock_in_details (stock_in_id, product_id, quantity, unit_cost) VALU
 (9, 10, 10, 650.00),
 (10, 3, 10, 250.00),
 (11, 15, 10, 500.00);
+
+
+
+-- Stock Out: 
+INSERT INTO stock_out (branch_id, user_id, reference_no, stock_out_date, total_amount, notes) VALUES
+(1, 2, 'SO-20260621-B1', DATE_SUB(CURDATE(), INTERVAL 13 DAY), 4400.00, 'Daily sales'),
+(2, 3, 'SO-20260621-B2', DATE_SUB(CURDATE(), INTERVAL 13 DAY), 2700.00, 'Daily sales'),
+(1, 2, 'SO-20260622-B1', DATE_SUB(CURDATE(), INTERVAL 12 DAY), 6600.00, 'Daily sales'),
+(2, 3, 'SO-20260622-B2', DATE_SUB(CURDATE(), INTERVAL 12 DAY), 5800.00, 'Daily sales'),
+(1, 2, 'SO-20260623-B1', DATE_SUB(CURDATE(), INTERVAL 11 DAY), 4500.00, 'Daily sales'),
+(2, 3, 'SO-20260623-B2', DATE_SUB(CURDATE(), INTERVAL 11 DAY), 5200.00, 'Daily sales'),
+(1, 2, 'SO-20260624-B1', DATE_SUB(CURDATE(), INTERVAL 10 DAY), 5500.00, 'Daily sales'),
+(2, 3, 'SO-20260624-B2', DATE_SUB(CURDATE(), INTERVAL 10 DAY), 4200.00, 'Daily sales'),
+(1, 2, 'SO-20260625-B1', DATE_SUB(CURDATE(), INTERVAL 9 DAY), 10650.00, 'Daily sales'),
+(1, 2, 'SO-20260626-B1', DATE_SUB(CURDATE(), INTERVAL 8 DAY), 11400.00, 'Daily sales'),
+(2, 3, 'SO-20260626-B2', DATE_SUB(CURDATE(), INTERVAL 8 DAY), 6600.00, 'Daily sales'),
+(1, 2, 'SO-20260627-B1', DATE_SUB(CURDATE(), INTERVAL 7 DAY), 11200.00, 'Daily sales'),
+(2, 3, 'SO-20260627-B2', DATE_SUB(CURDATE(), INTERVAL 7 DAY), 5250.00, 'Daily sales'),
+(1, 2, 'SO-20260628-B1', DATE_SUB(CURDATE(), INTERVAL 6 DAY), 6900.00, 'Daily sales'),
+(2, 3, 'SO-20260628-B2', DATE_SUB(CURDATE(), INTERVAL 6 DAY), 4050.00, 'Daily sales'),
+(1, 2, 'SO-20260629-B1', DATE_SUB(CURDATE(), INTERVAL 5 DAY), 14750.00, 'Daily sales'),
+(2, 3, 'SO-20260630-B2', DATE_SUB(CURDATE(), INTERVAL 4 DAY), 3600.00, 'Daily sales'),
+(1, 2, 'SO-20260630-B1', DATE_SUB(CURDATE(), INTERVAL 4 DAY), 4950.00, 'Daily sales'),
+(1, 2, 'SO-20260701-B1', DATE_SUB(CURDATE(), INTERVAL 3 DAY), 13300.00, 'Daily sales'),
+(2, 3, 'SO-20260701-B2', DATE_SUB(CURDATE(), INTERVAL 3 DAY), 3300.00, 'Daily sales'),
+(1, 2, 'SO-20260702-B1', DATE_SUB(CURDATE(), INTERVAL 2 DAY), 17500.00, 'Daily sales'),
+(1, 2, 'SO-20260703-B1', DATE_SUB(CURDATE(), INTERVAL 1 DAY), 16500.00, 'Daily sales'),
+(2, 3, 'SO-20260703-B2', DATE_SUB(CURDATE(), INTERVAL 1 DAY), 3750.00, 'Daily sales'),
+(2, 3, 'SO-20260704-B2', CURDATE(), 12100.00, 'Daily sales'),
+(1, 2, 'SO-20260704-B1', CURDATE(), 4400.00, 'Daily sales');
+
+
+INSERT INTO settings (setting_key, setting_value) VALUES
+('company_name', 'Perfect Choice'),
+('currency', 'BDT'),
+('low_stock_threshold_default', '10');
+
 
