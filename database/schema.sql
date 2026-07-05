@@ -114,6 +114,21 @@ CREATE TABLE stock_out (
     FOREIGN KEY (branch_id) REFERENCES branches(branch_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+-- ---------------------------------------------------------------------
+--STOCK_OUT_DETAILS 
+-- ---------------------------------------------------------------------
+CREATE TABLE stock_out_details (
+    detail_id INT AUTO_INCREMENT PRIMARY KEY,
+    stock_out_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(10,2) NOT NULL,
+    subtotal DECIMAL(12,2) GENERATED ALWAYS AS (quantity * unit_price) STORED,
+    FOREIGN KEY (stock_out_id) REFERENCES stock_out(stock_out_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
 -- ---------------------------------------------------------------------
 -- SETTINGS 
 -- ---------------------------------------------------------------------
