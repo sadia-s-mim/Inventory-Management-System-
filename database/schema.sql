@@ -130,6 +130,20 @@ CREATE TABLE stock_out_details (
 );
 
 -- ---------------------------------------------------------------------
+-- NOTIFICATIONS — low stock alerts
+-- ---------------------------------------------------------------------
+CREATE TABLE notifications (
+    notification_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    branch_id INT NOT NULL,
+    message VARCHAR(255) NOT NULL,
+    is_read TINYINT(1) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
+    FOREIGN KEY (branch_id) REFERENCES branches(branch_id) ON DELETE CASCADE
+);
+
+-- ---------------------------------------------------------------------
 -- SETTINGS 
 -- ---------------------------------------------------------------------
 CREATE TABLE settings (
