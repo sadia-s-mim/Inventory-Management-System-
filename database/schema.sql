@@ -53,6 +53,21 @@ CREATE TABLE categories (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (parent_id) REFERENCES categories(category_id) ON DELETE CASCADE
 );
+
+-- ---------------------------------------------------------------------
+-- SUPPLIERS
+-- ---------------------------------------------------------------------
+CREATE TABLE suppliers (
+    supplier_id INT AUTO_INCREMENT PRIMARY KEY,
+    supplier_name VARCHAR(150) NOT NULL,
+    contact_person VARCHAR(100),
+    phone VARCHAR(30),
+    email VARCHAR(150),
+    address VARCHAR(255),
+    status ENUM('active','inactive') DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- ---------------------------------------------------------------------
 -- STOCK_IN 
 -- ---------------------------------------------------------------------
