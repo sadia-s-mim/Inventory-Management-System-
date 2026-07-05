@@ -203,6 +203,13 @@ CREATE TABLE settings (
 -- =====================================================================
 -- SAMPLE DATA
 -- =====================================================================
+
+INSERT INTO roles (role_name, description) VALUES
+('Admin', 'Full system access'),
+('Branch Manager', 'Manages branch inventory and approves stock movement'),
+('Sales User', 'Records sales and checks product availability');
+
+
 INSERT INTO branches (branch_name, location, phone) VALUES
 ('Perfect Choice - Gulshan', 'Gulshan Avenue, Dhaka', '01700000001'),
 ('Perfect Choice - Uttara', 'Sector 7, Uttara, Dhaka', '01700000002');
@@ -242,6 +249,24 @@ INSERT INTO categories (category_name, parent_id, cat_level) VALUES
 INSERT INTO suppliers (supplier_name, contact_person, phone, email, address) VALUES
 ('Dhaka Textile House', 'Karim Rahman', '01811111111', 'contact@dhakatextile.com', 'Old Dhaka, Dhaka'),
 ('Northern Footwear Ltd.', 'Fatima Begum', '01822222222', 'sales@northernfootwear.com', 'Tongi, Gazipur');
+
+-- Products 
+INSERT INTO products (sku, product_name, category_id, supplier_id, size, color, cost_price, selling_price, reorder_level) VALUES
+('PC-ABY-001', 'Classic Black Abaya', 7, 1, 'M', 'Black', 1200.00, 2200.00, 10),
+('PC-ABY-002', 'Embellished Abaya', 7, 1, 'L', 'Navy', 1500.00, 2800.00, 8),
+('PC-HIJ-001', 'Chiffon Hijab', 8, 1, 'Free Size', 'Maroon', 250.00, 550.00, 20),
+('PC-HIJ-002', 'Jersey Hijab', 8, 1, 'Free Size', 'Black', 200.00, 450.00, 25),
+('PC-BUR-001', 'Classic Burqa', 9, 1, 'L', 'Black', 1400.00, 2600.00, 10),
+('PC-KUR-001', 'Embroidered Kurti', 10, 1, 'L', 'Mustard Yellow', 700.00, 1450.00, 15),
+('PC-KUR-002', 'Printed Kurti', 10, 1, 'M', 'Teal', 600.00, 1250.00, 15),
+('PC-TOP-001', 'Casual Top', 11, 1, 'M', 'White', 400.00, 900.00, 20),
+('PC-HEL-001', 'Block Heel Sandal', 12, 2, '38', 'Beige', 800.00, 1750.00, 8),
+('PC-FLT-001', 'Ballet Flats', 13, 2, '37', 'Black', 650.00, 1400.00, 10),
+('PC-SHR-001', 'Formal Cotton Shirt', 14, 1, 'M', 'White', 600.00, 1300.00, 15),
+('PC-SHR-002', 'Casual Check Shirt', 14, 1, 'L', 'Blue', 550.00, 1150.00, 15),
+('PC-PNJ-001', 'Eid Panjabi', 15, 1, 'XL', 'Off-White', 900.00, 1900.00, 10),
+('PC-LOA-001', 'Leather Loafers', 16, 2, '42', 'Brown', 1100.00, 2200.00, 8),
+('PC-SAN-001', 'Mens Sandals', 17, 2, '41', 'Brown', 500.00, 1100.00, 10);
 
 -- Stock In:
 INSERT INTO stock_in (supplier_id, branch_id, user_id, reference_no, stock_in_date, total_cost, notes) VALUES
@@ -363,6 +388,41 @@ INSERT INTO stock_out_details (stock_out_id, product_id, quantity, unit_price) V
 (24, 3, 6, 550.00),
 (24, 14, 4, 2200.00),
 (25, 1, 2, 2200.00);
+
+
+-- Final inventory snapshot 
+INSERT INTO inventory (product_id, branch_id, quantity) VALUES
+(1, 1, 25),
+(1, 2, 23),
+(2, 1, 14),
+(2, 2, 10),
+(3, 1, 63),
+(3, 2, 49),
+(4, 1, 55),
+(4, 2, 35),
+(5, 1, 16),
+(5, 2, 12),
+(6, 1, 32),
+(6, 2, 10),
+(7, 1, 23),
+(7, 2, 13),
+(8, 1, 50),
+(8, 2, 18),
+(9, 1, 16),
+(9, 2, 7),
+(10, 1, 34),
+(10, 2, 11),
+(11, 1, 30),
+(11, 2, 28),
+(12, 1, 24),
+(12, 2, 18),
+(13, 1, 0),
+(13, 2, 9),
+(14, 1, 11),
+(14, 2, 1),
+(15, 1, 28),
+(15, 2, 9);
+
 
 INSERT INTO settings (setting_key, setting_value) VALUES
 ('company_name', 'Perfect Choice'),
